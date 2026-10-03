@@ -1,0 +1,36 @@
+{
+  "name": "mini-timer-app",
+  "version": "1.0.0",
+  "description": "A customizable timer app.",
+  "keywords": [
+    "timer",
+    "app",
+    "planning"
+  ],
+  "homepage": "https://github.com/KejaWright/Mini-Timer-App#readme",
+  "bugs": {
+    "url": "https://github.com/KejaWright/Mini-Timer-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KejaWright/Mini-Timer-App.git"
+  },
+  "license": "ISC",
+  "author": "Keja Wright-Thompson",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^8.0.1",
+    "@electron-forge/core": "^8.0.1",
+    "@electron-forge/maker-squirrel": "^8.0.1",
+    "@electron-forge/maker-wix": "^8.0.1",
+    "@electron-forge/maker-zip": "^8.0.1",
+    "electron": "^44.5.0"
+  }
+}

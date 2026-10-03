@@ -1,0 +1,69 @@
+<!--Code by Keja Wright-Thompson-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="css\mainStyle.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+        </style>
+        <title>Mini Timer</title>
+    </head>
+    <body>
+        <div class="topbar">
+            <ul>
+                <li><button id="menubars" onclick="navbarToggle()"; 
+                color: var(--current-navbar-font-color);"">&#9776</button></li>
+                <li class="split"><input type="color" id="themePicker" list="presets">
+                    <datalist id="presets">
+                        <option value="#990000"></option><option value="#ff6977"></option><option value="#c51628"></option><!--Reds-->
+                        <option value="#f17c48"></option><option value="#c76e06"></option><option value="#ffa669"></option><!--Oranges-->
+                        <option value="#fed41e"></option><option value="#e3a91f"></option><option value="#ffd5b6"></option><!--Yellows-->
+                        <option value="#82bc00"></option><option value="#13ae9e"></option><option value="#9bf00b"></option><!--Greens-->
+                        <option value="#70d1fe"></option><option value="#aec6cf"></option><option value="#006dae"></option><!--Blues-->
+                        <option value="#9f13ae"></option><option value="#eea8f5"></option><option value="#aa37df"></option><!--Purples-->
+                        <option value="#ae1370"></option><option value="#ffb6bc"></option><option value="#ff6a76"></option><!--Pinks-->
+                    </datalist></li>
+                <li class="split"><button id="colormode_button" onclick="colorModeChange()" style="border-radius: 10px;">Dark Mode</button></li>
+                <li class="split volume-control"><button id="volDown">-</button><label id="volumeLabel">&#x1F509</label><button id="volUp">+</button>
+                    <span id="curVolNumber">100</span>
+                </li>
+                <li class="split"><button id="resetApp" onclick="resetApp()">Reset App</button></li>
+            </ul>
+        </div>
+        
+        <div class="navbar" id="navbar"><!--Will actually come from side-->
+            <ul>
+                <li><a href="index.html">TIMERS</a></li>
+                <li><a href="presets.html">PRESETS</a></li>
+                <li><a href="alarms.html">ALARMS</a></li>
+            </ul>
+        </div>
+        <div class="alarmContainer">
+            <div class="table">
+                <table id="alarmTable">
+                    <thead>
+                        <tr>
+                            <th>Alarm Name</th>
+                            <th>Alarm File</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alarmList">
+                        <tr>
+                            <td><input type="text" id="alarmName" placeholder="Alarm Name" maxlength="20" required></td>
+                            <td><input type="file" id="alarmFile" accept="audio/*"></td>
+                            <td><button id="addAlarmButton" onclick="makeAlarm()">Add Alarm</button></td>
+                        </tr>
+                        <!-- Alarm list will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </body>
+    <script src="js/functioning.js"></script>
+    <script src="renderer.js"></script>
+</html>

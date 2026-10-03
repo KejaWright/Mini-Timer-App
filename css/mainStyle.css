@@ -1,0 +1,296 @@
+/*Code by Keja Wright-Thompson*/
+
+/*style file created by us
+00: CSS Variables
+01: Layouts
+02: Color
+03: Font
+04: Nice Decoration
+*/
+
+/*00*/
+:root{
+    --dark-mode-bg:#2e2e2e;
+    --dark-mode-navbar:#B1B2B5FF;
+    --dark-mode-font-color:#d7d7d7FF;
+    --dark-mode-navbar-font-color:#000000FF;
+
+    --light-mode-bg:rgb(255, 255, 255);
+    --light-mode-navbar:#333333FF;
+    --light-mode-font-color:#121212FF;
+    --light-mode-navbar-font-color: #dcdcdcFF;
+
+    --system-theme:#c76e06FF; /*Default style that can be changed later*/
+    --current-bg: var(--light-mode-bg);
+    --current-navbar: var(--light-mode-navbar);
+    --current-font-color: var(--light-mode-font-color);
+    --current-navbar-font-color: var(--light-mode-navbar-font-color);
+}
+
+:root.dark-mode {
+    --current-bg: var(--dark-mode-bg);
+    --current-navbar: var(--dark-mode-navbar);
+    --current-font-color: var(--dark-mode-font-color);
+    --current-navbar-font-color: var(--dark-mode-navbar-font-color);
+}
+
+
+
+/*01*/
+div.navbar{
+    position: fixed;
+    left:0px;
+    top: 30px;
+    padding: 0;
+    width: 120px;
+    height: 430px;
+    z-index: 3;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+div.navbar ul{
+    list-style-type: none;
+    margin: 0;
+    left:0%;
+    padding: 10%;
+    width: 80%;
+    height: 100%;
+}
+
+div.navbar li{
+    position: relative;
+    height: 20%;
+}
+
+div.topbar{
+    position: fixed;
+    top:0%;
+    left: 0%;
+    width:615px;
+    height:30px;
+    z-index: 3;
+    overflow:visible;
+}
+
+div.topbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+div.topbar ul li{
+    float:left;
+    display: block;
+    text-align: center;
+    padding: 2px 5px;
+    text-align: center;
+    app-region: no-drag;
+}
+
+div.topbar ul li button, #themePicker{
+    height:25px;
+    font-size: 12px;
+}
+
+#curVolNumber{
+    position:fixed;
+    top:30px;
+    left:202px;
+    width: 40px;
+    height: 20px;
+    background-color: var(--current-navbar);
+    color: var(--current-navbar-font-color);
+    text-align: center;
+    font-size: 14px;
+    display: none;
+    z-index: 4;
+}
+
+#volumeLabel{
+    padding: 0px 10px;
+}
+
+#volumeLabel:hover ~ #curVolNumber{
+    display:block;
+}
+
+.titlebar {
+    background-color: var(--system-theme);
+    app-region: drag;
+}
+
+article{
+    display: inline-grid;
+    border-radius: 10px;
+    width: 260px;
+    height: 126px;
+    text-align: center;
+    padding: 5px;
+}
+
+.timerContainer article[data-saved-entry]{
+    background-color: var(--system-theme);
+    border: 2px solid var(--current-navbar);
+}
+
+.icon-action{
+    width: 36px;
+    height: 32px;
+    padding: 2px 6px;
+    background-color: var(--current-navbar);
+    color: var(--current-navbar-font-color);
+    border-radius: 5px;
+}
+
+.timer-actions{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    gap: 6px;
+    width: 100%;
+    align-self: end;
+}
+
+.timer-delete-action{
+    position: absolute;
+    right: 0;
+}
+
+.timerContainer{
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 10px;
+    padding: 20px;
+    position:absolute;
+    top: 30px;
+    left: 0%;
+    width:615px;
+    height: 100%;
+    z-index: 1;
+}
+
+.alarmContainer{
+    width: 600px;
+    padding: 0px;
+    position:relative;
+    top: 30px;
+    left:0%;
+}
+
+#alarmTable{
+    width:100%;
+    background-color: var(--current-bg);
+}
+
+#alarmTable tr,
+#presetsTable tr{
+    background-color: var(--current-bg);
+    color: var(--current-font-color);
+    box-shadow: none;
+}
+
+#alarmTable .icon-action{
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: 15px;
+    padding:0;
+}
+
+.presetsContainer{
+    width: 600px;
+    padding: 10px;
+    position:relative;
+    top: 30px;
+    left:0%;
+}
+
+#presetinfoenter{
+    border-style: dashed;
+    border-color: var(--current-navbar);
+    border-radius: 10px;
+}
+
+/*02*/
+body{
+    background-color: var(--current-bg);
+
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    width: 615px;
+    height:500px;
+}
+
+div.navbar{
+    background-color: var(--current-navbar);
+}
+
+#menubars{
+    background-color:#FFFFFF00; 
+    border:none;
+    color: var(--current-navbar-font-color);
+}
+
+
+div.topbar{
+    background-color: var(--current-navbar);
+    color: var(--current-navbar-font-color);
+}
+
+#addTimerSection, #addPresetTimerSection, #addCustomTimerSection{
+    border-style: dashed;
+    border-color: var(--current-navbar);
+    color: var(--current-font-color)
+}
+
+#addPresets, #addCustom{
+    border-radius: 15px;
+}
+
+#presetsTable{
+    width: 100%;
+    background-color: var(--current-bg);
+    color: var(--current-font-color);
+}
+
+
+/*03*/
+.bagel-fat-one-regular {
+  font-family: "Bagel Fat One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+html * {
+    font-family: "Bagel Fat One", system-ui !important;
+}
+
+div.navbar a{
+    color: var(--current-navbar-font-color);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+div.navbar a:hover{
+    color: var(--system-theme);
+}
+
+article h2, #customTimeHR, #customTimeMIN, #customTimeSEC {
+    font-size: 24px;
+}
+
+#customName{
+    font-size:14px;
+    height:20px;
+}
+
+
+/*04*/
+div.navbar.is-open{
+    transform: translateX(0);
+}
+
+#menubars:active{
+    color: var(--system-theme);
+}

@@ -1,0 +1,93 @@
+<!--Code by Keja Wright-Thompson-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="css\mainStyle.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+        </style>
+        <title>Mini Timer Organizer</title>
+    </head>
+    <body>
+        <div class="titlebar">Cool titlebar</div>
+        <div class="topbar">
+            <ul>
+                <li><button id="menubars" onclick="navbarToggle()"; 
+                color: var(--current-navbar-font-color);"">&#9776</button></li>
+                <li class="split"><input type="color" id="themePicker" list="presets">
+                    <datalist id="presets">
+                    <option value="#990000"></option><option value="#ff6977"></option><option value="#c51628"></option><!--Reds-->
+                    <option value="#f17c48"></option><option value="#c76e06"></option><option value="#ffa669"></option><!--Oranges-->
+                    <option value="#fed41e"></option><option value="#e3a91f"></option><option value="#ffd5b6"></option><!--Yellows-->
+                    <option value="#82bc00"></option><option value="#13ae9e"></option><option value="#9bf00b"></option><!--Greens-->
+                    <option value="#70d1fe"></option><option value="#aec6cf"></option><option value="#006dae"></option><!--Blues-->
+                    <option value="#9f13ae"></option><option value="#eea8f5"></option><option value="#aa37df"></option><!--Purples-->
+                    <option value="#ae1370"></option><option value="#ffb6bc"></option><option value="#ff6a76"></option><!--Pinks-->
+                    </datalist></li>
+                <li class="split"><button id="colormode_button" onclick="colorModeChange()" style="border-radius: 10px;">Dark Mode</button></li>
+                <li class="split volume-control"><button id="volDown">-</button><label id="volumeLabel">&#x1F509</label><button id="volUp">+</button>
+                    <span id="curVolNumber">100</span>
+                </li>
+                <li class="split"><button id="resetApp" onclick="resetApp()">Reset App</button></li>
+            </ul>
+        </div>
+        
+        <div class="navbar" id="navbar"><!--Will actually come from side-->
+            <ul>
+                <li><a href="index.html">TIMERS</a></li>
+                <li><a href="presets.html">PRESETS</a></li>
+                <li><a href="alarms.html">ALARMS</a></li>
+            </ul>
+        </div>
+        
+        <div class="timerContainer"><!--Add timers here-->
+                        <article id="addTimerSection">
+                            <h2>Add New Timer</h2>
+                            <button id="addPresets" style="background-color: var(--system-theme);">Preset</button>
+                            <button id="addCustom" style="background-color: var(--system-theme);">Custom</button>
+                        </article>
+                        
+                        <!--For Presets Timer-->
+                        <article id="addPresetTimerSection" style="display: none;">
+                            <label><select id="presetsType" required style="background-color: var(--system-theme);">
+                                <option value=""></option>
+                            </select>
+                            <select id="alarmsType" required style="background-color: var(--system-theme);">
+                                <option value="none">none</option>
+                            </select></label>
+                            <label><button id="cancelPresetTimer" style="background-color: var(--system-theme);">&#9746</button>
+                            <button id="addPresetTimer" style="background-color: var(--system-theme);">&#9745</button></label>
+                        </article>
+
+                        <!--For Custom Timer-->
+                        <article id="addCustomTimerSection" style="display: none;">
+                            <input type=text id="customName" placeholder="Enter Timer Name" maxlength="20" required style="text-align: center;">
+                            <label><input type=number id="customTimeHR" oninput="maxLengthCheck(this)" placeholder="00" min="0" max="99" step=1 maxlength="2" required style="height:30px">:
+                            <input type=number id="customTimeMIN" oninput="maxLengthCheck(this)" placeholder="00" min="0" max="99" step=1 maxlength="2" required style="height:30px">:
+                            <input type=number id="customTimeSEC" oninput="maxLengthCheck(this)" placeholder="00" min="0" max="99" step=1 maxlength="2" required style="height:30px"></label>
+                            <select id="customAlarmsType" style="background-color: var(--system-theme);">
+                                <option value="none">none</option>
+                            </select>
+                            <label><button id="cancelCustom" style="background-color: var(--system-theme);">&#9746</button>
+                            <button id="addCustomTimerButton" style="background-color: var(--system-theme);" onclick="addCustomTimer()">&#9745</button></label>
+                        </article>
+                        
+                        <!--Created timers will be inserted here using javascript-->
+
+        </div>
+        
+
+
+        <script src="js\functioning.js"></script>
+        <script src="renderer.js"></script>
+        <script>
+            function maxLengthCheck(object){
+                if (object.value.length > object.maxLength)
+                object.value = object.value.slice(0, object.maxLength)
+            }
+        </script>
+    </body>
+</html>
